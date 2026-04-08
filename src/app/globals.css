@@ -1,26 +1,193 @@
 @import "tailwindcss";
 
+/* Interactive hover utilities */
+.card-hover {
+  transition: border-color 200ms, background 200ms;
+}
+.card-hover:hover {
+  border-color: var(--accent) !important;
+  background: var(--surface-raised) !important;
+}
+
+.nav-link-hover:hover {
+  color: var(--accent) !important;
+}
+
+.btn-accent {
+  transition: background 150ms;
+}
+.btn-accent:hover {
+  background: var(--accent-hover) !important;
+}
+
+.btn-outline {
+  transition: border-color 150ms, background 150ms;
+}
+.btn-outline:hover {
+  border-color: var(--muted) !important;
+  background: var(--surface) !important;
+}
+
+.btn-ghost:hover {
+  border-color: var(--muted) !important;
+  color: var(--foreground) !important;
+}
+
+.link-muted {
+  transition: color 150ms;
+  color: var(--muted);
+}
+.link-muted:hover {
+  color: var(--foreground) !important;
+}
+
+.link-accent {
+  transition: color 150ms;
+  color: var(--muted);
+}
+.link-accent:hover {
+  color: var(--accent) !important;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0d0d0f;
+  --surface: #16161a;
+  --surface-raised: #1e1e24;
+  --border: #2a2a35;
+  --foreground: #e8e8f0;
+  --muted: #8888a0;
+  --accent: #7c6af7;
+  --accent-hover: #9585fa;
+  --accent-dim: rgba(124, 106, 247, 0.12);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-border: var(--border);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-dim: var(--accent-dim);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-dim);
+  color: var(--accent-hover);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Prose styles for blog content */
+.prose {
+  color: var(--foreground);
+  max-width: 65ch;
+  line-height: 1.75;
+}
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  color: var(--foreground);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+.prose h1 { font-size: 2rem; margin-top: 0; }
+.prose h2 { font-size: 1.5rem; }
+.prose h3 { font-size: 1.25rem; }
+.prose p { margin-bottom: 1.25em; }
+.prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.prose a:hover { color: var(--accent-hover); }
+.prose code {
+  background: var(--surface-raised);
+  color: var(--accent-hover);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+  font-family: var(--font-mono), monospace;
+}
+.prose pre {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.875rem;
+  color: var(--foreground);
+}
+.prose ul, .prose ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.25em;
+}
+.prose li { margin-bottom: 0.4em; }
+.prose blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.25em;
+  margin: 1.5em 0;
+  color: var(--muted);
+  font-style: italic;
+}
+.prose strong { color: var(--foreground); font-weight: 600; }
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2em 0;
+}
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin: 1.5em 0;
+}
+.prose th,
+.prose td {
+  padding: 0.6em 1em;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.prose th {
+  background: var(--surface-raised);
+  font-weight: 600;
+  color: var(--foreground);
+}
+.prose td {
+  color: var(--muted);
 }
