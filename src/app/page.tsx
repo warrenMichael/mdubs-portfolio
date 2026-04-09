@@ -31,13 +31,6 @@ export default function HomePage() {
       {/* ─── Hero ───────────────────────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-6 pt-24 pb-20">
         <div className="max-w-2xl">
-          <p
-            className="text-sm font-mono tracking-widest uppercase mb-5"
-            style={{ color: "var(--accent)" }}
-          >
-            Available for work
-          </p>
-
           <h1
             className="text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-6"
             style={{ color: "var(--foreground)" }}
@@ -259,7 +252,7 @@ export default function HomePage() {
             I&apos;m open to senior front-end and full-stack roles. If you have a project or feature worth building, let&apos;s talk.
           </p>
           <a
-            href="mailto:hello@mdub.dev"
+            href="mailto:warren.michael2+portfolio@gmail.com"
             className="btn-accent inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold"
             style={{ background: "var(--accent)", color: "#fff" }}
           >
