@@ -1,3 +1,5 @@
+import { withBasePath } from "@/lib/basePath";
+
 export interface Project {
   id: string;
   title: string;
@@ -24,7 +26,7 @@ export const projects: Project[] = [
     year: 2023,
     role: "Senior Software Engineer",
     link: "https://www.joinparachute.com",
-    image: "/images/project-parachute-site.png",
+    image: withBasePath("/images/project-parachute-site.png"),
     featured: true,
   },
   {
@@ -38,7 +40,7 @@ export const projects: Project[] = [
     year: 2025,
     role: "Senior Software Engineer",
     link: "https://www.joinparachute.com/app/",
-    image: "/images/project-parachute-app.png",
+    image: withBasePath("/images/project-parachute-app.png"),
     featured: true,
   },
   {
@@ -52,7 +54,7 @@ export const projects: Project[] = [
     year: 2024,
     role: "Senior Software Engineer",
     link: "https://www.joinparachute.com/plasma-donation/location/",
-    image: "/images/project-parachute.png",
+    image: withBasePath("/images/project-parachute.png"),
     featured: true,
   },
   {
@@ -66,7 +68,7 @@ export const projects: Project[] = [
     year: 2019,
     role: "Software Engineer II",
     link: "https://www.cntraveler.com/destinations/tokyo",
-    image: "/images/project-conde-nast.png",
+    image: withBasePath("/images/project-conde-nast.png"),
     featured: true,
   },
   {
@@ -91,7 +93,7 @@ export const projects: Project[] = [
     tags: ["JavaScript", "jQuery", "HTML5", "CSS3", "XSL", "Velocity", "SOLR"],
     year: 2014,
     role: "Front End Engineer, Kanban Solutions",
-    image: "/images/project-nikon.png",
+    image: withBasePath("/images/project-nikon.png"),
     featured: false,
   },
   {
