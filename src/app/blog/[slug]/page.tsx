@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blogPosts, getBlogPost } from "@/lib/blog";
 import { BackLink, FooterBackLink } from "@/components/BlogNavLinks";
+import { createHighlighter } from "shiki";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -33,8 +34,14 @@ function formatDate(dateStr: string) {
  * Minimal markdown-to-HTML converter for the blog post content.
  * Handles headings, bold, inline code, code blocks, blockquotes,
  * unordered lists, horizontal rules, tables, and paragraphs.
+ * Code blocks are syntax-highlighted with Shiki.
  */
-function renderMarkdown(md: string): string {
+async function renderMarkdown(md: string): Promise<string> {
+  const highlighter = await createHighlighter({
+    themes: ["github-dark"],
+    langs: ["js", "jsx", "ts", "tsx", "bash", "json", "css", "html"],
+  });
+
   const lines = md.trim().split("\n");
   const html: string[] = [];
   let i = 0;
@@ -67,17 +74,20 @@ function renderMarkdown(md: string): string {
 
     // Fenced code block
     if (line.startsWith("```")) {
-      const lang = line.slice(3).trim();
+      const lang = line.slice(3).trim() || "text";
       i++;
       const codeLines: string[] = [];
       while (i < lines.length && !lines[i].startsWith("```")) {
-        codeLines.push(escapeHtml(lines[i]));
+        codeLines.push(lines[i]);
         i++;
       }
       i++; // skip closing ```
-      html.push(
-        `<pre><code class="language-${lang}">${codeLines.join("\n")}</code></pre>`
-      );
+      const code = codeLines.join("\n");
+      const highlighted = highlighter.codeToHtml(code, {
+        lang,
+        theme: "github-dark",
+      });
+      html.push(highlighted);
       continue;
     }
 
@@ -187,7 +197,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const post = getBlogPost(slug);
   if (!post) notFound();
 
-  const contentHtml = renderMarkdown(post.content);
+  const contentHtml = await renderMarkdown(post.content);
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
