@@ -21,7 +21,7 @@ export const projects: Project[] = [
     description:
       "Marketing site, React Native donor app, and Rails backend for a plasma donation network spanning 16 states.",
     longDescription:
-      "Sole engineer responsible for the full digital footprint at Parachute, a plasma donation network operating across 16 states. Built and maintained the joinparachute.com marketing site on Gatsby with Prismic CMS, enabling the marketing team to author and publish independently. Contributed features to a React Native mobile app used by donors to book appointments, manage accounts, and track campaigns. Also contributed to the Rails API powering both the mobile app and an internal admin tool used by employees to manage donors, appointments, centers, and payments. Implemented marketing analytics and tooling to support product and marketing team goals throughout.",
+      "Sole engineer responsible for the marketing presence at Parachute, a plasma donation network operating across 16 states. Built and maintained joinparachute.com, the marketing site, on Gatsby with Prismic CMS, enabling the marketing team to author and publish independently. Contributed features to a React Native mobile app used by donors to book appointments, manage accounts, and track campaigns. Also contributed to the Rails API powering both the mobile app and an internal admin tool used by employees to manage donors, appointments, centers, and payments. Implemented marketing analytics and tooling to support product and marketing team goals throughout.",
     tags: ["Gatsby", "React", "React Native", "Ruby on Rails", "Prismic", "TypeScript"],
     year: 2023,
     role: "Senior Software Engineer",
